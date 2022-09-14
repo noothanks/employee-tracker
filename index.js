@@ -230,29 +230,29 @@ const updateEmployeeManager = async () => {
 const init = async () => {
     let exit = false;
     while (exit === false) {
-        let initialChoice = await actionChoice();
-        if (initialChoice === "Quit") {
+        let choice = await actionChoice();
+        if (choice === "Quit") {
             exit = true;
             return quit();
         } else if (
-            initialChoice === "View departments" ||
-            initialChoice === "View roles" ||
-            initialChoice === "View employees"
+            choice === "View departments" ||
+            choice === "View roles" ||
+            choice === "View employees"
             ) {
-            viewAllChoices(initialChoice);
+            viewAllChoices(choice);
             //compares user choice and calls proper method accordingly
-        } else if (initialChoice === "View employees by manager") {
+        } else if (choice === "View employees by manager") {
             let employeesByManager = await viewManagerEmployees();
-        } else if (initialChoice === "Add department") {
-            let departmentAdded = await addDepartment();
-        } else if (initialChoice === "Add role") {
-            let roleAdded = await addRole();
-        } else if (initialChoice === "Add employee") {
-            let employeeAdded = await addEmployee();
-        } else if (initialChoice === "Update employee's role") {
-            let employeeUpdated = await updateEmployee();
-        } else if (initialChoice === "Update employee's manager") {
-            let employeeManagerUpdated = await updateEmployeeManager();
+        } else if (choice === "Add department") {
+            let newDepartment = await addDepartment();
+        } else if (choice === "Add role") {
+            let newRole = await addRole();
+        } else if (choice === "Add employee") {
+            let newEmployee= await addEmployee();
+        } else if (choice === "Update employee's role") {
+            let updatedEmployee = await updateEmployee();
+        } else if (choice === "Update employee's manager") {
+            let updatedEmployeeManager = await updateEmployeeManager();
         }
     }
 };
